@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/js/bootstrap.bundle.min.js"></script>
+    <title>Data</title>
+
+    <style>
+      body {
+        background-image: url('1.jpg');
+        background-position: center;
+        background-repeat: no-repeat;
+        height: 550px;
+        background-size: cover;
+        position: relative;
+      }
+    </style>
+
+</head>
+
+<body>
+    <div class="container d-flex justify-content-center">
+        <div class="d-flex min-vh-100 flex-column aligns-items-center justify-content-center">
+            <h1>Siapa aku?</h1>
+            <div class="py-4 text-center">
+                <button type="button" class="btn btn-dark" onclick="loadDoc()">Tampilkan</button>
+                <div class="my-3" id='targetData'></div>
+            </div>
+        </div>
+    </div>
+    <footer class="text-center">
+        <h5>
+            <a href="../index.html" style="color: inherit;">Kembali</a>
+        </h5>
+    </footer>
+</body>
+<script>
+    function loadDoc() {
+        const xhttp = new XMLHttpRequest();
+        xhttp.onload = function () {
+            const myObj = JSON.parse(this.responseText);
+            document.getElementById("targetData").innerHTML = myObj.teks;
+        }
+        xhttp.open("GET", "1.json", true);
+        
+        xhttp.send();
+    }
+</script>
+
+</html>
